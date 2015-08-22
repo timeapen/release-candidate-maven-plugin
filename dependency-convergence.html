@@ -123,20 +123,7 @@
 					<div class="nav-collapse collapse" id="toc-nav-collapse">
 						<ul id="toc" class="nav">
 						<li class="toplevel"><a href="#Dependency_Convergence" title="Dependency Convergence">Dependency Convergence</a></li>
-						<li class="dropdown">
-							<a href="#Dependencies_used_in_this_project" title="Dependencies used in this project" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">Dependencies used in this project <b class="caret"></b></a>
-							<ul class="dropdown-menu" role="menu">
-								<!-- Repeat the item, otherwise it is not clickable as the dropdown root -->
-								<li><a href="#Dependencies_used_in_this_project" title="Dependencies used in this project">Dependencies used in this project</a></li>
-								<li class="divider"></li>
-								<li><a href="#comgoogleguavaguava" title="com.google.guava:guava">com.google.guava:guava</a></li>
-								<li><a href="#junitjunit" title="junit:junit">junit:junit</a></li>
-								<li><a href="#orgapachemavenmaven-artifact" title="org.apache.maven:maven-artifact">org.apache.maven:maven-artifact</a></li>
-								<li><a href="#orgcodehausplexusplexus-classworlds" title="org.codehaus.plexus:plexus-classworlds">org.codehaus.plexus:plexus-classworlds</a></li>
-								<li><a href="#orgcodehausplexusplexus-utils" title="org.codehaus.plexus:plexus-utils">org.codehaus.plexus:plexus-utils</a></li>
-
-							</ul>
-						</li>
+						<li class="toplevel"><a href="#Dependencies_used_in_this_project" title="Dependencies used in this project">Dependencies used in this project</a></li>
 						</ul>
 					</div>
 				</div>
@@ -168,13 +155,13 @@
   <thead> 
    <tr class="a"> 
     <th>Ready for release (100 % convergence and no SNAPSHOTS):</th> 
-    <td><i class="icon-exclamation-sign"></i>&nbsp;<b>Error</b><br />You do not have 100 % convergence.</td> 
+    <td><i class="icon-ok"></i>&nbsp;<b>Success</b></td> 
    </tr> 
   </thead> 
   <thead> 
    <tr class="b"> 
     <th>Convergence (NOD/NOA):</th> 
-    <td><i class="icon-exclamation-sign"></i>&nbsp;<b>80 %</b></td> 
+    <td><i class="icon-ok"></i>&nbsp;<b>100 %</b></td> 
    </tr> 
   </thead> 
   <thead> 
@@ -186,13 +173,13 @@
   <thead> 
    <tr class="b"> 
     <th>Number of version-conflicting artifacts (NOC):</th> 
-    <td>5</td> 
+    <td>0</td> 
    </tr> 
   </thead> 
   <thead> 
    <tr class="a"> 
     <th>Number of unique artifacts (NOA):</th> 
-    <td>52</td> 
+    <td>42</td> 
    </tr> 
   </thead> 
   <thead> 
@@ -210,277 +197,6 @@
 </div> 
 <div class="section"> 
  <h3 id="Dependencies_used_in_this_project">Dependencies used in this project</h3> 
- <div class="section"> 
-  <h4 id="comgoogleguavaguava">com.google.guava:guava</h4> 
-  <table border="0" class="bodyTable table table-striped table-hover"> 
-   <tbody> 
-    <tr class="b"> 
-     <td><i class="icon-exclamation-sign"></i></td> 
-     <td> 
-      <table border="0" class="bodyTable table table-striped table-hover"> 
-       <tbody> 
-        <tr class="a"> 
-         <td width="25%">16.0.1</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven:maven-core:jar:3.2.5:compile 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.sonatype.sisu:sisu-guice:jar:no_aop:3.2.3:compile 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;(com.google.guava:guava:jar:16.0.1:compile - omitted for conflict with 18.0) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="b"> 
-         <td width="25%">18.0</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;com.google.guava:guava:jar:18.0:compile 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-       </tbody> 
-      </table></td> 
-    </tr> 
-   </tbody> 
-  </table> 
- </div> 
- <div class="section"> 
-  <h4 id="junitjunit">junit:junit</h4> 
-  <table border="0" class="bodyTable table table-striped table-hover"> 
-   <tbody> 
-    <tr class="a"> 
-     <td><i class="icon-exclamation-sign"></i></td> 
-     <td> 
-      <table border="0" class="bodyTable table table-striped table-hover"> 
-       <tbody> 
-        <tr class="b"> 
-         <td width="25%">3.8.1</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven.plugin-testing:maven-plugin-testing-harness:jar:3.3.0:test 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.codehaus.plexus:plexus-archiver:jar:2.2:test 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:test 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;(junit:junit:jar:3.8.1:test - omitted for conflict with 4.11) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="a"> 
-         <td width="25%">4.11</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;junit:junit:jar:4.11:test 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-       </tbody> 
-      </table></td> 
-    </tr> 
-   </tbody> 
-  </table> 
- </div> 
- <div class="section"> 
-  <h4 id="orgapachemavenmaven-artifact">org.apache.maven:maven-artifact</h4> 
-  <table border="0" class="bodyTable table table-striped table-hover"> 
-   <tbody> 
-    <tr class="b"> 
-     <td><i class="icon-exclamation-sign"></i></td> 
-     <td> 
-      <table border="0" class="bodyTable table table-striped table-hover"> 
-       <tbody> 
-        <tr class="a"> 
-         <td width="25%">3.0</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.4:provided 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;(org.apache.maven:maven-artifact:jar:3.0:provided - omitted for conflict with 3.2.5) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="b"> 
-         <td width="25%">3.2.5</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />+-&nbsp;org.apache.maven:maven-plugin-api:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;\-&nbsp;(org.apache.maven:maven-artifact:jar:3.2.5:compile - omitted for duplicate) 
-           <br />+-&nbsp;org.apache.maven:maven-core:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;\-&nbsp;(org.apache.maven:maven-artifact:jar:3.2.5:compile - omitted for duplicate) 
-           <br />+-&nbsp;org.apache.maven:maven-compat:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;\-&nbsp;(org.apache.maven:maven-artifact:jar:3.2.5:compile - omitted for duplicate) 
-           <br />\-&nbsp;org.apache.maven:maven-artifact:jar:3.2.5:compile 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-       </tbody> 
-      </table></td> 
-    </tr> 
-   </tbody> 
-  </table> 
- </div> 
- <div class="section"> 
-  <h4 id="orgcodehausplexusplexus-classworlds">org.codehaus.plexus:plexus-classworlds</h4> 
-  <table border="0" class="bodyTable table table-striped table-hover"> 
-   <tbody> 
-    <tr class="a"> 
-     <td><i class="icon-exclamation-sign"></i></td> 
-     <td> 
-      <table border="0" class="bodyTable table table-striped table-hover"> 
-       <tbody> 
-        <tr class="b"> 
-         <td width="25%">2.5.1</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven:maven-plugin-api:jar:3.2.5:compile 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.3.0.M1:compile 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-classworlds:jar:2.5.1:compile - omitted for conflict with 2.5.2) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="a"> 
-         <td width="25%">2.5.2</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven:maven-core:jar:3.2.5:compile 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.codehaus.plexus:plexus-classworlds:jar:2.5.2:compile 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-       </tbody> 
-      </table></td> 
-    </tr> 
-   </tbody> 
-  </table> 
- </div> 
- <div class="section"> 
-  <h4 id="orgcodehausplexusplexus-utils">org.codehaus.plexus:plexus-utils</h4> 
-  <table border="0" class="bodyTable table table-striped table-hover"> 
-   <tbody> 
-    <tr class="b"> 
-     <td><i class="icon-exclamation-sign"></i></td> 
-     <td> 
-      <table border="0" class="bodyTable table table-striped table-hover"> 
-       <tbody> 
-        <tr class="a"> 
-         <td width="25%">1.0.4</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven.plugin-testing:maven-plugin-testing-harness:jar:3.3.0:test 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.codehaus.plexus:plexus-archiver:jar:2.2:test 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:test 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:1.0.4:test - omitted for conflict with 3.0.20) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="b"> 
-         <td width="25%">1.5.5</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven:maven-core:jar:3.2.5:compile 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3:compile 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:1.5.5:compile - omitted for conflict with 3.0.20) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="a"> 
-         <td width="25%">2.1</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven:maven-plugin-api:jar:3.2.5:compile 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.3.0.M1:compile 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:2.1:compile - omitted for conflict with 3.0.20) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="b"> 
-         <td width="25%">3.0</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven.plugin-testing:maven-plugin-testing-harness:jar:3.3.0:test 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.codehaus.plexus:plexus-archiver:jar:2.2:test 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;org.codehaus.plexus:plexus-io:jar:2.0.4:test 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0:test - omitted for conflict with 3.0.20) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="a"> 
-         <td width="25%">3.0.15</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven:maven-compat:jar:3.2.5:compile 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.apache.maven.wagon:wagon-provider-api:jar:2.8:compile 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.15:compile - omitted for conflict with 3.0.20) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="b"> 
-         <td width="25%">3.0.20</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />+-&nbsp;org.apache.maven:maven-core:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;+-&nbsp;org.apache.maven:maven-settings:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;|&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.20:compile - omitted for duplicate) 
-           <br />|&nbsp;&nbsp;+-&nbsp;org.apache.maven:maven-settings-builder:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;|&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.20:compile - omitted for duplicate) 
-           <br />|&nbsp;&nbsp;+-&nbsp;org.apache.maven:maven-repository-metadata:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;|&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.20:compile - omitted for duplicate) 
-           <br />|&nbsp;&nbsp;+-&nbsp;org.apache.maven:maven-model-builder:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;|&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.20:compile - omitted for duplicate) 
-           <br />|&nbsp;&nbsp;+-&nbsp;org.apache.maven:maven-aether-provider:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;|&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.20:compile - omitted for duplicate) 
-           <br />|&nbsp;&nbsp;\-&nbsp;org.codehaus.plexus:plexus-utils:jar:3.0.20:compile 
-           <br />+-&nbsp;org.apache.maven:maven-model:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.20:compile - omitted for duplicate) 
-           <br />+-&nbsp;org.apache.maven:maven-compat:jar:3.2.5:compile 
-           <br />|&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.20:compile - omitted for duplicate) 
-           <br />\-&nbsp;org.apache.maven:maven-artifact:jar:3.2.5:compile 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.20:compile - omitted for duplicate) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-        <tr class="a"> 
-         <td width="25%">3.0.7</td> 
-         <td> 
-          <ol style="list-style-type: decimal">
-            com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee 
-           <br />\-&nbsp;org.apache.maven.plugin-testing:maven-plugin-testing-harness:jar:3.3.0:test 
-           <br />&nbsp;&nbsp;&nbsp;\-&nbsp;org.codehaus.plexus:plexus-archiver:jar:2.2:test 
-           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-&nbsp;(org.codehaus.plexus:plexus-utils:jar:3.0.7:test - omitted for conflict with 3.0.20) 
-           <br /> 
-           <br /> 
-          </ol></td> 
-        </tr> 
-       </tbody> 
-      </table></td> 
-    </tr> 
-   </tbody> 
-  </table> 
- </div> 
 </div>
 			</div>
 		</div>
@@ -601,7 +317,7 @@
 			<div class="span12">
 				<p class="pull-right"><a href="#">Back to top</a></p>
 				<p class="copyright">Copyright &copy;2015 <a href="http://smartcodeltd.co.uk">smartcode ltd</a>. All Rights Reserved.</p>
-				<p class="version-date"><span class="projectVersion">Version: 1.0.0-201508220838.ff433ee. </span><span class="publishDate">Last Published: 2015-08-22. </span></p>
+				<p class="version-date"><span class="projectVersion">Version: 1.0.0-201508220943.e7321c6. </span><span class="publishDate">Last Published: 2015-08-22. </span></p>
 		
 <footer>
   <p class="sponsor">
