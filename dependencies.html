@@ -621,7 +621,7 @@
  <div class="section"> 
   <h3 id="Dependency_Tree">Dependency Tree</h3> 
   <ul> 
-   <li>com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-SNAPSHOT <button title="Information" class="btn btn-link btn-small" type="button" data-toggle="collapse" data-target="#_dep0"><i class="icon-info-sign"></i></button> 
+   <li>com.smartcodeltd:release-candidate-maven-plugin:maven-plugin:1.0.0-201508220838.ff433ee <button title="Information" class="btn btn-link btn-small" type="button" data-toggle="collapse" data-target="#_dep0"><i class="icon-info-sign"></i></button> 
     <div id="_dep0" style="" class=" collapse"> 
      <table border="0" class="bodyTable table table-striped table-hover"> 
       <thead> 
@@ -631,7 +631,7 @@
       </thead> 
       <tbody> 
        <tr class="b"> 
-        <td> <p><b>Description: </b>Enabling Continuous Delivery with Maven</p> <p><b>URL: </b><a class="externalLink" href="http://release-candidate.smartcodeltd.com">http://release-candidate.smartcodeltd.com</a></p> <p><b>Project License: </b><a class="externalLink" href="file:///Users/janek/Projects/smartcode/release-candidate-maven-plugin/LICENSE.md">New BSD License</a></p></td> 
+        <td> <p><b>Description: </b>Enabling Continuous Delivery with Maven</p> <p><b>URL: </b><a class="externalLink" href="http://release-candidate.smartcodeltd.com">http://release-candidate.smartcodeltd.com</a></p> <p><b>Project License: </b><a class="externalLink" href="file:///scratch/jenkins/workspace/release-candidate-maven-plugin/LICENSE.md">New BSD License</a></p></td> 
        </tr> 
       </tbody> 
      </table> 
@@ -1769,29 +1769,57 @@
   </thead> 
   <tbody> 
    <tr class="b"> 
-    <td>repo.jenkins-ci.org</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public/">http://repo.jenkins-ci.org/public/</a></td> 
-    <td>Yes</td> 
+    <td>plexus.snapshots</td> 
+    <td><a class="externalLink" href="https://oss.sonatype.org/content/repositories/plexus-snapshots">https://oss.sonatype.org/content/repositories/plexus-snapshots</a></td> 
+    <td>No</td> 
     <td>Yes</td> 
     <td>No</td> 
    </tr> 
    <tr class="a"> 
-    <td>central</td> 
-    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2">https://repo.maven.apache.org/maven2</a></td> 
-    <td>Yes</td> 
+    <td>apache.snapshots</td> 
+    <td><a class="externalLink" href="http://repository.apache.org/snapshots">http://repository.apache.org/snapshots</a></td> 
     <td>No</td> 
+    <td>Yes</td> 
     <td>No</td> 
    </tr> 
    <tr class="b"> 
+    <td>sonatype-nexus-snapshots</td> 
+    <td><a class="externalLink" href="https://oss.sonatype.org/content/repositories/snapshots">https://oss.sonatype.org/content/repositories/snapshots</a></td> 
+    <td>No</td> 
+    <td>Yes</td> 
+    <td>No</td> 
+   </tr> 
+   <tr class="a"> 
     <td>snapshots</td> 
     <td><a class="externalLink" href="http://snapshots.maven.codehaus.org/maven2">http://snapshots.maven.codehaus.org/maven2</a></td> 
     <td>No</td> 
     <td>Yes</td> 
     <td>Yes</td> 
    </tr> 
+   <tr class="b"> 
+    <td>snapshots.jboss.org</td> 
+    <td><a class="externalLink" href="http://snapshots.jboss.org/maven2">http://snapshots.jboss.org/maven2</a></td> 
+    <td>No</td> 
+    <td>Yes</td> 
+    <td>No</td> 
+   </tr> 
    <tr class="a"> 
-    <td>bintray-jan-molak-maven</td> 
-    <td><a class="externalLink" href="http://dl.bintray.com/jan-molak/maven">http://dl.bintray.com/jan-molak/maven</a></td> 
+    <td>oss.sonatype.org/jboss-snapshots</td> 
+    <td><a class="externalLink" href="http://oss.sonatype.org/content/repositories/jboss-snapshots">http://oss.sonatype.org/content/repositories/jboss-snapshots</a></td> 
+    <td>No</td> 
+    <td>Yes</td> 
+    <td>No</td> 
+   </tr> 
+   <tr class="b"> 
+    <td>central</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2">https://repo.maven.apache.org/maven2</a></td> 
+    <td>Yes</td> 
+    <td>No</td> 
+    <td>No</td> 
+   </tr> 
+   <tr class="a"> 
+    <td>repository.jboss.org</td> 
+    <td><a class="externalLink" href="http://repository.jboss.org/maven2">http://repository.jboss.org/maven2</a></td> 
     <td>Yes</td> 
     <td>No</td> 
     <td>No</td> 
@@ -1803,277 +1831,457 @@
   <thead> 
    <tr class="b"> 
     <th>Total</th> 
-    <th>repo.jenkins-ci.org</th> 
-    <th>UK</th> 
-    <th>bintray-jan-molak-maven</th> 
+    <th>plexus.snapshots</th> 
+    <th>apache.snapshots</th> 
+    <th>sonatype-nexus-snapshots</th> 
+    <th>snapshots.jboss.org</th> 
+    <th>oss.sonatype.org/jboss-snapshots</th> 
+    <th>central</th> 
+    <th>repository.jboss.org</th> 
    </tr> 
   </thead> 
   <thead> 
    <tr class="a"> 
     <th>Artifact</th> 
-    <th>repo.jenkins-ci.org</th> 
-    <th>UK</th> 
-    <th>bintray-jan-molak-maven</th> 
+    <th>plexus.snapshots</th> 
+    <th>apache.snapshots</th> 
+    <th>sonatype-nexus-snapshots</th> 
+    <th>snapshots.jboss.org</th> 
+    <th>oss.sonatype.org/jboss-snapshots</th> 
+    <th>central</th> 
+    <th>repository.jboss.org</th> 
    </tr> 
   </thead> 
   <tbody> 
    <tr class="b"> 
     <td>aopalliance:aopalliance:jar:1.0</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//aopalliance/aopalliance/1.0/aopalliance-1.0.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"><i class="icon-ok"></i></a></td> 
+    <td><a class="externalLink" href="http://repository.jboss.org/maven2/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"><i class="icon-ok"></i></a></td> 
    </tr> 
    <tr class="a"> 
     <td>classworlds:classworlds:jar:1.1-alpha-2</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"><i class="icon-ok"></i></a></td> 
+    <td><a class="externalLink" href="http://repository.jboss.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"><i class="icon-ok"></i></a></td> 
    </tr> 
    <tr class="b"> 
     <td>com.google.guava:guava:jar:18.0</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//com/google/guava/guava/18.0/guava-18.0.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/com/google/guava/guava/18.0/guava-18.0.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>commons-io:commons-io:jar:2.2</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//commons-io/commons-io/2.2/commons-io-2.2.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/commons-io/commons-io/2.2/commons-io-2.2.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/commons-io/commons-io/2.2/commons-io-2.2.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>de.pdark:decentxml:jar:1.4</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//de/pdark/decentxml/1.4/decentxml-1.4.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/de/pdark/decentxml/1.4/decentxml-1.4.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/de/pdark/decentxml/1.4/decentxml-1.4.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>javax.annotation:jsr250-api:jar:1.0</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar"><i class="icon-ok"></i></a></td> 
+    <td><a class="externalLink" href="http://repository.jboss.org/maven2/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar"><i class="icon-ok"></i></a></td> 
    </tr> 
    <tr class="b"> 
     <td>javax.enterprise:cdi-api:jar:1.0</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//javax/enterprise/cdi-api/1.0/cdi-api-1.0.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/javax/enterprise/cdi-api/1.0/cdi-api-1.0.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.0/cdi-api-1.0.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>javax.inject:javax.inject:jar:1</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//javax/inject/javax.inject/1/javax.inject-1.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>joda-time:joda-time:jar:2.8.1</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//joda-time/joda-time/2.8.1/joda-time-2.8.1.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>junit:junit:jar:4.11</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//junit/junit/4.11/junit-4.11.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/junit/junit/4.11/junit-4.11.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.apache.maven:maven-aether-provider:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.apache.maven:maven-artifact:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.apache.maven:maven-compat:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-compat/3.2.5/maven-compat-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-compat/3.2.5/maven-compat-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-compat/3.2.5/maven-compat-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.apache.maven:maven-core:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.apache.maven:maven-model:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.apache.maven:maven-model-builder:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.apache.maven:maven-plugin-api:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.apache.maven:maven-repository-metadata:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.apache.maven:maven-settings:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.apache.maven:maven-settings-builder:jar:3.2.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/maven-settings-builder/3.2.5/maven-settings-builder-3.2.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/maven-settings-builder/3.2.5/maven-settings-builder-3.2.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings-builder/3.2.5/maven-settings-builder-3.2.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.apache.maven.plugin-testing:maven-plugin-testing-harness:jar:3.3.0</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/plugin-testing/maven-plugin-testing-harness/3.3.0/maven-plugin-testing-harness-3.3.0.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/plugin-testing/maven-plugin-testing-harness/3.3.0/maven-plugin-testing-harness-3.3.0.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/plugin-testing/maven-plugin-testing-harness/3.3.0/maven-plugin-testing-harness-3.3.0.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.4</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/plugin-tools/maven-plugin-annotations/3.4/maven-plugin-annotations-3.4.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/plugin-tools/maven-plugin-annotations/3.4/maven-plugin-annotations-3.4.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-annotations/3.4/maven-plugin-annotations-3.4.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.apache.maven.wagon:wagon-provider-api:jar:2.8</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/apache/maven/wagon/wagon-provider-api/2.8/wagon-provider-api-2.8.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/apache/maven/wagon/wagon-provider-api/2.8/wagon-provider-api-2.8.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-provider-api/2.8/wagon-provider-api-2.8.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.codehaus.plexus:plexus-archiver:jar:2.2</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/codehaus/plexus/plexus-archiver/2.2/plexus-archiver-2.2.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/codehaus/plexus/plexus-archiver/2.2/plexus-archiver-2.2.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/2.2/plexus-archiver-2.2.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.codehaus.plexus:plexus-classworlds:jar:2.5.2</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.codehaus.plexus:plexus-component-annotations:jar:1.5.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar"><i class="icon-ok"></i></a></td> 
+    <td><a class="externalLink" href="http://repository.jboss.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar"><i class="icon-ok"></i></a></td> 
    </tr> 
    <tr class="a"> 
     <td>org.codehaus.plexus:plexus-interpolation:jar:1.21</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.codehaus.plexus:plexus-io:jar:2.0.4</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/codehaus/plexus/plexus-io/2.0.4/plexus-io-2.0.4.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/codehaus/plexus/plexus-io/2.0.4/plexus-io-2.0.4.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.0.4/plexus-io-2.0.4.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.codehaus.plexus:plexus-utils:jar:3.0.20</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/codehaus/plexus/plexus-utils/3.0.20/plexus-utils-3.0.20.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/codehaus/plexus/plexus-utils/3.0.20/plexus-utils-3.0.20.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.20/plexus-utils-3.0.20.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.eclipse.aether:aether-api:jar:1.0.0.v20140518</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.eclipse.aether:aether-impl:jar:1.0.0.v20140518</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.eclipse.aether:aether-spi:jar:1.0.0.v20140518</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.eclipse.aether:aether-util:jar:1.0.0.v20140518</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.0.M1</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/eclipse/sisu/org.eclipse.sisu.inject/0.3.0.M1/org.eclipse.sisu.inject-0.3.0.M1.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.0.M1/org.eclipse.sisu.inject-0.3.0.M1.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.0.M1/org.eclipse.sisu.inject-0.3.0.M1.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.3.0.M1</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.0.M1/org.eclipse.sisu.plexus-0.3.0.M1.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.0.M1/org.eclipse.sisu.plexus-0.3.0.M1.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.0.M1/org.eclipse.sisu.plexus-0.3.0.M1.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.hamcrest:hamcrest-all:jar:1.3</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.hamcrest:hamcrest-core:jar:1.3</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.mockito:mockito-all:jar:1.9.5</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.sonatype.plexus:plexus-cipher:jar:1.4</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="b"> 
     <td>org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>org.sonatype.sisu:sisu-guice:jar:no_aop:3.2.3</td> 
-    <td><a class="externalLink" href="http://repo.jenkins-ci.org/public//org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3-no_aop.jar"><i class="icon-ok"></i></a></td> 
-    <td><a class="externalLink" href="http://uk.maven.org/maven2/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3-no_aop.jar"><i class="icon-ok"></i></a></td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td><a class="externalLink" href="https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3-no_aop.jar"><i class="icon-ok"></i></a></td> 
     <td>-</td> 
    </tr> 
    <tr class="a"> 
     <td>42 (compile: 31, test: 10, provided: 1)</td> 
-    <td>42</td> 
-    <td>42</td> 
     <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>0</td> 
+    <td>42</td> 
+    <td>4</td> 
    </tr> 
   </tbody> 
  </table> 
@@ -2197,7 +2405,7 @@
 			<div class="span12">
 				<p class="pull-right"><a href="#">Back to top</a></p>
 				<p class="copyright">Copyright &copy;2015 <a href="http://smartcodeltd.co.uk">smartcode ltd</a>. All Rights Reserved.</p>
-				<p class="version-date"><span class="projectVersion">Version: 1.0.0-SNAPSHOT. </span><span class="publishDate">Last Published: 2015-08-22. </span></p>
+				<p class="version-date"><span class="projectVersion">Version: 1.0.0-201508220838.ff433ee. </span><span class="publishDate">Last Published: 2015-08-22. </span></p>
 		
 <footer>
   <p class="sponsor">

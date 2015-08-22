@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>UpdateVersionMojo.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Release Candidate</a> &gt; <a href="index.source.html" class="el_package">com.smartcodeltd</a> &gt; <span class="el_source">UpdateVersionMojo.java</span></div><h1>UpdateVersionMojo.java</h1><pre class="source lang-java linenums">package com.smartcodeltd;
+
+import com.google.common.io.Files;
+import com.smartcodeltd.domain.Version;
+import de.pdark.decentxml.Document;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
+
+import java.io.File;
+import java.io.IOException;
+
+/**
+ * &lt;p&gt;
+ * Updates the &lt;code&gt;pom.xml&lt;/code&gt; project version as per the configured &lt;code&gt;releaseVersionFormat&lt;/code&gt; template.
+ * &lt;/p&gt;
+ *
+ * &lt;p&gt;
+ * The original structure of the &lt;code&gt;pom.xml&lt;/code&gt; file is preserved when the file is updated
+ * (including the comments, whitespace, formatting, etc.),
+ * so that &lt;a href=&quot;https://github.com/smartcodeltd/release-candidate-maven-plugin/blob/ac0037773095f5501b5c5af6612b7327335a6ef9/src/test/java/com/smartcodeltd/UpdateVersionMojoTest.java#L90&quot;&gt;the only thing that changes&lt;/a&gt; is the version number.
+ * &lt;/p&gt;
+ */
+@Mojo(name = &quot;updateVersion&quot;)
+<span class="fc" id="L26">public class UpdateVersionMojo</span>
+        extends ReleaseCandidateMojo
+{
+    private final static String default_version_format  = &quot;{{ version }}&quot;;
+
+    /**
+     * &lt;p&gt;
+     * Describes how the pom.xml project version should be expanded into a new version number.
+     * &lt;/p&gt;
+     *
+     * &lt;p&gt;
+     * For example, assume:
+     * &lt;/p&gt;
+     *
+     * &lt;ul&gt;
+     *     &lt;li&gt;that &lt;code&gt;pom.xml&lt;/code&gt; project version is set to &lt;code&gt;1.2.0-beta-SNAPSHOT&lt;/code&gt;&lt;/li&gt;
+     *     &lt;li&gt;and that the current date is 2015-08-01&lt;/li&gt;
+     * &lt;/ul&gt;
+     *
+     * &lt;p&gt;
+     * Below table depicts the relationship between the &lt;code&gt;releaseVersionFormat&lt;/code&gt;
+     * and what project version gets expanded into when &lt;code&gt;release-candidate:updateVersion&lt;/code&gt; is called:
+     * &lt;/p&gt;
+     *
+     * &lt;table summary=&quot;The relationship between the releaseVersionFormat and what project version gets expanded into&quot;&gt;
+     *     &lt;thead&gt;
+     *     &lt;tr&gt;
+     *       &lt;th&gt;&lt;code&gt;releaseVersionFormat&lt;/code&gt;&lt;/th&gt;
+     *       &lt;th&gt;Result&lt;/th&gt;
+     *       &lt;th&gt;Outcome&lt;/th&gt;
+     *     &lt;/tr&gt;
+     *     &lt;/thead&gt;
+     *     &lt;tbody&gt;
+     *       &lt;tr&gt;
+     *         &lt;td&gt;&lt;code&gt;{{&amp;nbsp;version&amp;nbsp;}}&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;&lt;code&gt;1.2.0-beta-SNAPSHOT&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;Full version number, as is&lt;/td&gt;
+     *       &lt;/tr&gt;
+     *       &lt;tr&gt;
+     *         &lt;td&gt;&lt;code&gt;{{&amp;nbsp;api_version&amp;nbsp;}}&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;&lt;code&gt;1.2.0&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;The API version&lt;/td&gt;
+     *       &lt;/tr&gt;
+     *       &lt;tr&gt;
+     *         &lt;td&gt;&lt;code&gt;{{&amp;nbsp;qualified_api_version&amp;nbsp;}}&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;&lt;code&gt;1.2.0-beta&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;API version including a developer-defined &lt;a href=&quot;https://docs.oracle.com/middleware/1212/core/MAVEN/maven_version.htm#MAVEN400&quot;&gt;qualifier&lt;/a&gt;&lt;/td&gt;
+     *       &lt;/tr&gt;
+     *       &lt;tr&gt;
+     *         &lt;td&gt;&lt;code&gt;{{&amp;nbsp;timestamp('YYYYMMdd')&amp;nbsp;}}&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;&lt;code&gt;20150801&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;Current time; accepts a &lt;a href=&quot;http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html&quot;&gt;JodaTime-compatible&lt;/a&gt;
+     *             timestamp format definition&lt;/td&gt;
+     *       &lt;/tr&gt;
+     *     &lt;/tbody&gt;
+     * &lt;/table&gt;
+     *
+     * &lt;p&gt;
+     * Above tokens can also be used together, for example:
+     * &lt;/p&gt;
+     *
+     * &lt;table summary=&quot;Using multiple tokens together&quot;&gt;
+     *     &lt;thead&gt;
+     *     &lt;tr&gt;
+     *       &lt;th&gt;&lt;code&gt;releaseVersionFormat&lt;/code&gt;&lt;/th&gt;
+     *       &lt;th&gt;Result&lt;/th&gt;
+     *     &lt;/tr&gt;
+     *     &lt;/thead&gt;
+     *     &lt;tbody&gt;
+     *       &lt;tr&gt;
+     *         &lt;td&gt;&lt;code&gt;{{&amp;nbsp;qualified_api_version&amp;nbsp;}}-{{&amp;nbsp;timestamp('YYYYMMdd')&amp;nbsp;}}&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;&lt;code&gt;1.2.0-beta-20150801&lt;/code&gt;&lt;/td&gt;
+     *       &lt;/tr&gt;
+     *       &lt;tr&gt;
+     *         &lt;td&gt;&lt;code&gt;{{&amp;nbsp;qualified_api_version&amp;nbsp;}}-built.{{&amp;nbsp;timestamp('YYYYMMdd')&amp;nbsp;}}&lt;/code&gt;&lt;/td&gt;
+     *         &lt;td&gt;&lt;code&gt;1.2.0-beta-built.20150801&lt;/code&gt;&lt;/td&gt;
+     *       &lt;/tr&gt;
+     *     &lt;/tbody&gt;
+     * &lt;/table&gt;
+     *
+     * &lt;p&gt;
+     * &lt;strong&gt;Please note&lt;/strong&gt; that &lt;a href=&quot;http://books.sonatype.com/mvnref-book/reference/resource-filtering-sect-properties.html#resource-filtering-sect-user-defined&quot;&gt;Maven properties&lt;/a&gt; can be used as well.
+     * This way if you:
+     * &lt;/p&gt;
+     *
+     * &lt;ul&gt;
+     *   &lt;li&gt;provide, say a &lt;code&gt;build_number&lt;/code&gt; parameter when you build your project:&lt;br /&gt;&lt;code&gt;mvn clean package -Dbuild_number=176&lt;/code&gt;&lt;/li&gt;
+     *   &lt;li&gt;and given that you set &lt;code&gt;releaseVersionFormat&lt;/code&gt; to say:&lt;br /&gt;&lt;code&gt;{{&amp;nbsp;qualified_api_version&amp;nbsp;}}-build.${build_number}&lt;/code&gt;&lt;/li&gt;
+     *   &lt;li&gt;then the resulting version number will become:&lt;br /&gt;&lt;code&gt;1.2.0-beta-build.176&lt;/code&gt;&lt;/li&gt;
+     * &lt;/ul&gt;
+     */
+    @Parameter(defaultValue = default_version_format, required = false, property = &quot;releaseVersionFormat&quot;)
+    private String releaseVersionFormat;
+
+    public void execute()
+            throws MojoExecutionException
+    {
+<span class="fc" id="L123">        File   pom        = project.getFile();</span>
+<span class="fc" id="L124">        String newVersion = evaluated(versionOf(project));</span>
+
+<span class="fc" id="L126">        info(&quot;Setting version to: '%s'&quot;, newVersion);</span>
+
+        try {
+<span class="fc" id="L129">            update(pom, with(newVersion));</span>
+        }
+<span class="nc" id="L131">        catch (IOException e) {</span>
+<span class="nc" id="L132">            throw new MojoExecutionException(String.format(&quot;Couldn't write to pom file '%s'&quot;, pom.getPath()), e);</span>
+<span class="fc" id="L133">        }</span>
+<span class="fc" id="L134">    }</span>
+
+    // --
+
+    private String evaluated(Version version) {
+<span class="fc" id="L139">        return version.formattedWith(releaseVersionFormat);</span>
+    }
+
+    private void update(File pom, String newVersion) throws IOException {
+<span class="fc" id="L143">        Document doc = parsed(pom);</span>
+
+<span class="fc" id="L145">        doc.getChild(&quot;project/version&quot;).setText(newVersion);</span>
+
+<span class="fc" id="L147">        Files.write(doc.toString(), pom, charset);</span>
+<span class="fc" id="L148">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

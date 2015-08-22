@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Writer.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Release Candidate</a> &gt; <a href="index.source.html" class="el_package">com.smartcodeltd.writer</a> &gt; <span class="el_source">Writer.java</span></div><h1>Writer.java</h1><pre class="source lang-java linenums">package com.smartcodeltd.writer;
+
+import java.lang.reflect.Constructor;
+import java.net.URI;
+import java.nio.charset.Charset;
+
+public abstract class Writer {
+    public static Writer from(URI uri, Charset charset) {
+
+<span class="fc" id="L10">        String className = writerClassNameFrom(uri);</span>
+
+        try {
+<span class="fc" id="L13">            Class&lt;?&gt; theClass = Class.forName(className);</span>
+<span class="fc" id="L14">            Constructor&lt;?&gt; constructor = theClass.getConstructor(URI.class, Charset.class);</span>
+
+<span class="fc" id="L16">            return (Writer) constructor.newInstance(uri, charset);</span>
+<span class="nc" id="L17">        } catch (Exception e) {</span>
+<span class="nc" id="L18">            throw new IllegalArgumentException(String.format(&quot;Couldn't find the '%s' writer.&quot;, className), e);</span>
+        }
+    }
+
+    protected final URI uri;
+    protected final Charset charset;
+
+<span class="fc" id="L25">    protected Writer(URI uri, Charset charset) {</span>
+<span class="fc" id="L26">        this.uri     = uri;</span>
+<span class="fc" id="L27">        this.charset = charset;</span>
+<span class="fc" id="L28">    }</span>
+
+    abstract public void write(String message);
+
+    // --
+
+    private static String writerClassNameFrom(URI uri) {
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">        if (isNotDefined(uri.getScheme()) &amp;&amp; isDefined(uri.getPath())) {</span>
+<span class="fc" id="L36">            return toFullClassName(uri.getPath());</span>
+        }
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        else if (isDefined(uri.getScheme())) {</span>
+<span class="fc" id="L39">            return toFullClassName(uri.getScheme());</span>
+        }
+
+<span class="nc" id="L42">        throw new IllegalArgumentException(String.format(&quot;Couldn't derive a Writer name from uri: '%s'.&quot;, uri.toString()));</span>
+    }
+
+    private static String toFullClassName(String writerClass) {
+<span class="fc" id="L46">        return String.format(</span>
+                &quot;com.smartcodeltd.writer.To%s%s&quot;,
+                Character.toUpperCase(writerClass.charAt(0)),
+                writerClass.substring(1)
+        );
+    }
+
+    private static boolean isDefined(String value) {
+<span class="pc bpc" id="L54" title="1 of 4 branches missed.">        return value != null &amp;&amp; ! value.isEmpty();</span>
+    }
+
+    private static boolean isNotDefined(String value) {
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        return ! isDefined(value);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

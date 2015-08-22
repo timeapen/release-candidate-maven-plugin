@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Version.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Release Candidate</a> &gt; <a href="index.source.html" class="el_package">com.smartcodeltd.domain</a> &gt; <span class="el_source">Version.java</span></div><h1>Version.java</h1><pre class="source lang-java linenums">package com.smartcodeltd.domain;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Version {
+    private final String version;
+    private final SystemTime time;
+
+<span class="fc" id="L10">    private static final Pattern leading_whitespace = Pattern.compile(&quot;^\\s+&quot;, Pattern.MULTILINE);</span>
+<span class="fc" id="L11">    private static final Pattern timestamp          = Pattern.compile(&quot;\\{\\{ timestamp\\('(.*?)'\\) \\}\\}&quot;);</span>
+
+<span class="fc" id="L13">    public Version(String projectVersion) {</span>
+<span class="fc" id="L14">        this.version = projectVersion;</span>
+<span class="fc" id="L15">        this.time    = new SystemTime();</span>
+<span class="fc" id="L16">    }</span>
+<span class="fc" id="L17">    public Version(String projectVersion, SystemTime time) {</span>
+<span class="fc" id="L18">        this.version = projectVersion;</span>
+<span class="fc" id="L19">        this.time    = time;</span>
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * Formats the version as per the template provided.
+     *
+     * For example, assume pom version '1.2.5-beta-2-SNAPSHOT'.
+     *
+     * If a template contains one of the following tokens, they will be replaced as follows:
+     * &lt;pre&gt;
+     *   &quot;{{ version }}&quot;                   =&gt; &quot;1.2.5-beta-2-SNAPSHOT&quot;
+     *   &quot;{{ api_version }}&quot;               =&gt; &quot;1.2.5&quot;
+     *   &quot;{{ qualified_api_version }}&quot;     =&gt; &quot;1.2.5-beta-2&quot;
+     *   &quot;{{ timestamp('YYYYMMddHHmm') }}&quot; =&gt; &quot;201507302354&quot;
+     * &lt;/pre&gt;
+     *
+     * This allows you to do more interesting things. If you specified a following template:
+     * &lt;pre&gt;
+     *   &quot;{{ qualified_api_version }}-{{ timestamp('YYYYMMddHHmm') }}&quot;
+     * &lt;/pre&gt;
+     * you'd get:
+     * &lt;pre&gt;
+     *   &quot;1.2.5-beta-2-201507302354&quot;
+     * &lt;/pre&gt;
+     *
+     * @param template A template to format the version with
+     * @return project version with tokens substituted by calculated values
+     */
+    public String formattedWith(String template) {
+<span class="fc" id="L48">        return parseTimestamp(trimmed(template)</span>
+                .replace(&quot;{{ version }}&quot;, original(version))
+                .replace(&quot;{{ api_version }}&quot;, api(version))
+                .replace(&quot;{{ qualified_api_version }}&quot;, qualifiedApi(version)));
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L56">        return version;</span>
+    }
+
+    // --
+
+    private String trimmed(String template) {
+<span class="fc" id="L62">        return leading_whitespace.matcher(template).replaceAll(&quot;&quot;);</span>
+    }
+
+    private String parseTimestamp(String template) {
+<span class="fc" id="L66">        Matcher matcher = timestamp.matcher(template);</span>
+
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        return matcher.find()</span>
+            ? matcher.replaceAll(time.as(matcher.group(1)))
+            : template;
+    }
+
+    private String original(String version) {
+<span class="fc" id="L74">        return version;</span>
+    }
+
+    private String api(String version) {
+<span class="fc" id="L78">        int firstHyphenPosition = version.indexOf(&quot;-&quot;);</span>
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        return firstHyphenPosition &gt; 0 ?</span>
+                version.substring(0, firstHyphenPosition) :
+                version;
+    }
+
+    private String qualifiedApi(String version) {
+<span class="fc" id="L86">        return version.replaceAll(&quot;-SNAPSHOT&quot;, &quot;&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

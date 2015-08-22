@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ReleaseCandidateMojo.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Release Candidate</a> &gt; <a href="index.source.html" class="el_package">com.smartcodeltd</a> &gt; <span class="el_source">ReleaseCandidateMojo.java</span></div><h1>ReleaseCandidateMojo.java</h1><pre class="source lang-java linenums">package com.smartcodeltd;
+
+import com.google.common.io.CharStreams;
+import com.google.common.io.Files;
+import com.smartcodeltd.domain.Version;
+import de.pdark.decentxml.Document;
+import de.pdark.decentxml.XMLParser;
+import de.pdark.decentxml.XMLSource;
+import de.pdark.decentxml.XMLStringSource;
+import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.charset.Charset;
+
+abstract public class ReleaseCandidateMojo
+    extends AbstractMojo
+{
+    private final static String default_encoding        = &quot;UTF-8&quot;;
+
+    protected final Charset charset;
+
+    /**
+     * Encoding used when reading from and writing to files on disk.
+     */
+    @Parameter(defaultValue = default_encoding, required = false)
+    protected String encoding;
+
+    @Parameter(defaultValue = &quot;${project}&quot;, readonly = true )
+    protected MavenProject project;
+
+<span class="fc" id="L35">    public ReleaseCandidateMojo() {</span>
+<span class="fc" id="L36">        this.charset = Charset.forName(getOrElse(encoding, default_encoding));</span>
+<span class="fc" id="L37">    }</span>
+
+    protected void info(String template, Object... values) {
+<span class="fc" id="L40">        getLog().info(String.format(template, values));</span>
+<span class="fc" id="L41">    }</span>
+
+    protected &lt;T&gt; T with(T value) {
+<span class="fc" id="L44">        return value;</span>
+    }
+
+    protected Version versionOf(MavenProject project) {
+<span class="fc" id="L48">        return new Version(project.getVersion());</span>
+    }
+
+    protected &lt;T&gt; T getOrElse(T value, T defaultValue) {
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        return value != null ? value : defaultValue;</span>
+    }
+
+    protected Document parsed(File pom) throws IOException {
+<span class="fc" id="L56">        XMLParser parser = new XMLParser();</span>
+<span class="fc" id="L57">        XMLSource source = new XMLStringSource(CharStreams.toString(Files.newReader(pom, charset)));</span>
+
+<span class="fc" id="L59">        return parser.parse(source);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
