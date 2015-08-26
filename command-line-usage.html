@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Plugin Documentation | Release Candidate</title>
+		<title>Command line usage | Release Candidate</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -49,7 +49,7 @@
 		</script>
 		</head>
 
-	<body class="page-plugin-info project-release-candidate-maven-plugin" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-command-line-usage project-release-candidate-maven-plugin" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -66,10 +66,10 @@
 							<li ><a href="getting-started.html" title="Getting Started">Getting Started</a></li>
 							<li ><a href="https://github.com/smartcodeltd/release-candidate-maven-plugin/" title="GitHub" class="externalLink">GitHub</a></li>
 							<li ><a href="../blog/" title="Blog">Blog</a></li>
-							<li class="dropdown active">
+							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li class="active"><a href="" title="Configuration">Configuration</a></li>
+									<li ><a href="plugin-info.html" title="Configuration">Configuration</a></li>
 									<li ><a href="updateVersion-mojo.html" title="Updating the version">Updating the version</a></li>
 									<li ><a href="version-mojo.html" title="Reading the version">Reading the version</a></li>
 								</ul>
@@ -110,27 +110,8 @@
 			<ul class="breadcrumb">
 				<li><a href="./" title="Release Candidate">Release Candidate</a></li>
 				<li class="divider">/</li>
-				<li>Plugin Documentation</li>
+				<li>Command line usage</li>
 			</ul>
-		</div>
-		<hr class="toc-separator" />
-		<div id="toc-bar" class="navbar" data-spy="affix" data-offset-top="250">
-			<div class="navbar-inner">
-				<div id="toc-scroll-target" class="container">
-					<a class="btn btn-navbar" data-toggle="collapse" data-target="#toc-nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					<div class="nav-collapse collapse" id="toc-nav-collapse">
-						<ul id="toc" class="nav">
-						<li class="toplevel"><a href="#Plugin_Documentation" title="Plugin Documentation">Plugin Documentation</a></li>
-						<li class="toplevel"><a href="#System_Requirements" title="System Requirements">System Requirements</a></li>
-						<li class="toplevel"><a href="#Usage" title="Usage">Usage</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
 		</div>
 	</header>
 
@@ -140,87 +121,46 @@
 			<div class="body-content">
 <div class="section"> 
  <div class="page-header">
-  <h2 id="Plugin_Documentation">Plugin Documentation</h2>
+  <h2 id="Command_line_usage">Command line usage</h2>
  </div> 
- <a name="Plugin_Documentation"></a> 
- <p>Goals available for this plugin:</p> 
- <table border="0" class="bodyTable table table-striped table-hover"> 
-  <thead> 
-   <tr class="a"> 
-    <th>Goal</th> 
-    <th>Description</th> 
-   </tr> 
-  </thead> 
-  <tbody> 
-   <tr class="b"> 
-    <td><a href="updateVersion-mojo.html">release-candidate:updateVersion</a></td> 
-    <td><p>Updates the <code>pom.xml</code> project version as per the configured <code>releaseVersionFormat</code> template.</p> <p>The original structure of the <code>pom.xml</code> file is preserved when the file is updated (including the comments, whitespace, formatting, etc.), so that <a href="https://github.com/smartcodeltd/release-candidate-maven-plugin/blob/ac0037773095f5501b5c5af6612b7327335a6ef9/src/test/java/com/smartcodeltd/UpdateVersionMojoTest.java#L90">the only thing that changes</a> is the version number.</p></td> 
-   </tr> 
-   <tr class="a"> 
-    <td><a href="version-mojo.html">release-candidate:version</a></td> 
-    <td>Retrieves project version specified in <code>pom.xml</code> and outputs it either to stdout or to a file, depending on <a href="/version-mojo.html">configuration</a>.</td> 
-   </tr> 
-  </tbody> 
- </table> 
- <div class="section"> 
-  <h3 id="System_Requirements">System Requirements</h3> 
-  <a name="System_Requirements"></a> 
-  <p>The following specifies the minimum requirements to run this Maven plugin:</p> 
-  <table border="0" class="bodyTable table table-striped table-hover"> 
-   <tbody> 
-    <tr class="a"> 
-     <td>Maven</td> 
-     <td>3.2.5</td> 
-    </tr> 
-    <tr class="b"> 
-     <td>JDK</td> 
-     <td>1.6</td> 
-    </tr> 
-    <tr class="a"> 
-     <td>Memory</td> 
-     <td>No minimum requirement.</td> 
-    </tr> 
-    <tr class="b"> 
-     <td>Disk Space</td> 
-     <td>No minimum requirement.</td> 
-    </tr> 
-   </tbody> 
-  </table> 
- </div> 
- <div class="section"> 
-  <h3 id="Usage">Usage</h3> 
-  <a name="Usage"></a> 
-  <p>You should specify the version in your project's plugin configuration:</p> 
+ <p>To include the Release Candidate plugin in your Maven project, add the following declaration to the <tt>project/build/plugins</tt> section of the <tt>pom.xml</tt> file:</p> 
+ <div class="source"> 
   <div class="source"> 
-   <pre>&lt;project&gt;
-  ...
-  &lt;build&gt;
-    &lt;!-- To define the plugin version in your parent POM --&gt;
-    &lt;pluginManagement&gt;
-      &lt;plugins&gt;
-        &lt;plugin&gt;
-          &lt;groupId&gt;com.smartcodeltd&lt;/groupId&gt;
-          &lt;artifactId&gt;release-candidate-maven-plugin&lt;/artifactId&gt;
-          &lt;version&gt;1.0.0-201508251955.0e1793b&lt;/version&gt;
-        &lt;/plugin&gt;
-        ...
-      &lt;/plugins&gt;
-    &lt;/pluginManagement&gt;
-    &lt;!-- To use the plugin goals in your POM or parent POM --&gt;
-    &lt;plugins&gt;
-      &lt;plugin&gt;
-        &lt;groupId&gt;com.smartcodeltd&lt;/groupId&gt;
-        &lt;artifactId&gt;release-candidate-maven-plugin&lt;/artifactId&gt;
-        &lt;version&gt;1.0.0-201508251955.0e1793b&lt;/version&gt;
-      &lt;/plugin&gt;
-      ...
-    &lt;/plugins&gt;
-  &lt;/build&gt;
-  ...
-&lt;/project&gt;
+   <pre>&lt;plugin&gt;
+  &lt;groupId&gt;com.smartcodeltd&lt;/groupId&gt;
+  &lt;artifactId&gt;release-candidate-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-201508251955.0e1793b&lt;/version&gt;
+&lt;/plugin&gt;
 </pre> 
   </div> 
-  <p>For more information, see <a class="externalLink" href="http://maven.apache.org/guides/mini/guide-configuring-plugins.html">&quot;Guide to Configuring Plug-ins&quot;</a></p> 
+ </div> 
+ <p>You can find more on configuring Maven build plugins in <a class="externalLink" href="https://maven.apache.org/guides/mini/guide-configuring-plugins.html#Configuring_Build_Plugins">the official documentation</a>.</p> 
+ <div class="section"> 
+  <h3 id="Usage">Usage</h3> 
+  <p>Adding the plugin to your <tt>pom.xml</tt> file enables following goals:</p> 
+  <div class="source"> 
+   <div class="source"> 
+    <pre>$&gt; mvn release-candidate:updateVersion
+</pre> 
+   </div> 
+  </div> 
+  <p>which updates the <tt>pom.xml</tt> version as per the configuration and arguments injected by your CI server <a href="updateVersion-mojo.html">(learn more)</a>,</p> 
+  <div class="source"> 
+   <div class="source"> 
+    <pre>$&gt; mvn release-candidate:version
+</pre> 
+   </div> 
+  </div> 
+  <p>which prints the current version of your project to either standard output or a file so that it can be parsed and understood by the CI server <a href="version-mojo.html">(learn more)</a>.</p> 
+  <p>Both goals can also be executed from the command line directly:</p> 
+  <div class="source"> 
+   <div class="source"> 
+    <pre>$&gt; mvn com.smartcodeltd:release-candidate:LATEST:version
+$&gt; mvn com.smartcodeltd:release-candidate:LATEST:updateVersion
+</pre> 
+   </div> 
+  </div> 
+  <p><b>Read next</b>: <a href="getting-started.html">Configure the plugin to your needs</a> <small><i>(4 minute read)</i></small></p> 
  </div> 
 </div>
 			</div>
@@ -244,8 +184,8 @@
 						<li >
 							<a href="controlling-the-version-number.html" title="Versioning">Versioning</a>
 						</li>
-						<li >
-							<a href="command-line-usage.html" title="Command line">Command line</a>
+						<li class="active">
+							<a href="#" title="Command line">Command line</a>
 						</li>
 						<li >
 							<a href="getting-started.html" title="Getting Started">Getting Started</a>
@@ -288,8 +228,8 @@
 				<div class="span2 bottom-nav">
 					<ul class="nav nav-list">
 						<li class="nav-header">Documentation</li>
-						<li class="active">
-							<a href="#" title="Configuration">Configuration</a>
+						<li >
+							<a href="plugin-info.html" title="Configuration">Configuration</a>
 						</li>
 						<li >
 							<a href="updateVersion-mojo.html" title="Updating the version">Updating the version</a>
@@ -305,13 +245,8 @@
 						<li >
 							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-right"></i></a>
 						</li>
-						<li class="active">
-							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-down"></i></a>
-							<ul class="nav nav-list">
-						<li class="active">
-							<a href="#" title="Plugin Documentation">Plugin Documentation</a>
-						</li>
-							</ul>
+						<li >
+							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-right"></i></a>
 						</li>
 					</ul>
 				</div>
