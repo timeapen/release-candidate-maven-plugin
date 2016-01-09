@@ -48,15 +48,21 @@ abstract public class ReleaseCandidateMojo
 <span class="fc" id="L48">        return new Version(project.getVersion());</span>
     }
 
+    protected MavenProject root(MavenProject project) {
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        return project.hasParent()</span>
+                ? project.getParent()
+                : project;
+    }
+
     protected &lt;T&gt; T getOrElse(T value, T defaultValue) {
-<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        return value != null ? value : defaultValue;</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        return value != null ? value : defaultValue;</span>
     }
 
     protected Document parsed(File pom) throws IOException {
-<span class="fc" id="L56">        XMLParser parser = new XMLParser();</span>
-<span class="fc" id="L57">        XMLSource source = new XMLStringSource(CharStreams.toString(Files.newReader(pom, charset)));</span>
+<span class="fc" id="L62">        XMLParser parser = new XMLParser();</span>
+<span class="fc" id="L63">        XMLSource source = new XMLStringSource(CharStreams.toString(Files.newReader(pom, charset)));</span>
 
-<span class="fc" id="L59">        return parser.parse(source);</span>
+<span class="fc" id="L65">        return parser.parse(source);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
