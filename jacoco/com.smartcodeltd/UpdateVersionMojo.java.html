@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>UpdateVersionMojo.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Release Candidate</a> &gt; <a href="index.source.html" class="el_package">com.smartcodeltd</a> &gt; <span class="el_source">UpdateVersionMojo.java</span></div><h1>UpdateVersionMojo.java</h1><pre class="source lang-java linenums">package com.smartcodeltd;
 
+import static java.util.Arrays.asList;
+
+import java.io.File;
+import java.io.IOException;
+
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.io.Files;
@@ -9,11 +14,7 @@ import de.pdark.decentxml.Element;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-
-import java.io.File;
-import java.io.IOException;
-
-import static java.util.Arrays.asList;
+import org.apache.maven.project.MavenProject;
 
 /**
  * &lt;p&gt;
@@ -27,7 +28,7 @@ import static java.util.Arrays.asList;
  * &lt;/p&gt;
  */
 @Mojo(name = &quot;updateVersion&quot;)
-<span class="fc" id="L30">public class UpdateVersionMojo</span>
+<span class="fc" id="L31">public class UpdateVersionMojo</span>
         extends ReleaseCandidateMojo
 {
     private final static String default_version_format  = &quot;{{ version }}&quot;;
@@ -124,38 +125,65 @@ import static java.util.Arrays.asList;
     public void execute()
             throws MojoExecutionException
     {
-<span class="fc" id="L127">        File   pom        = project.getFile();</span>
-<span class="fc" id="L128">        String newVersion = evaluated(versionOf(root(project)));</span>
+<span class="fc" id="L128">        File   pom        = project.getFile();</span>
+<span class="fc" id="L129">        String newVersion = evaluated(versionOf(root(project)));</span>
 
-<span class="fc" id="L130">        info(&quot;Setting version to: '%s'&quot;, newVersion);</span>
+<span class="fc" id="L131">        info(&quot;Setting version to: '%s'&quot;, newVersion);</span>
 
         try {
-<span class="fc" id="L133">            update(pom, with(newVersion));</span>
+<span class="fc" id="L134">            update(pom, with(newVersion));</span>
         }
-<span class="nc" id="L135">        catch (IOException e) {</span>
-<span class="nc" id="L136">            throw new MojoExecutionException(String.format(&quot;Couldn't write to pom file '%s'&quot;, pom.getPath()), e);</span>
-<span class="fc" id="L137">        }</span>
-<span class="fc" id="L138">    }</span>
+<span class="nc" id="L136">        catch (IOException e) {</span>
+<span class="nc" id="L137">            throw new MojoExecutionException(String.format(&quot;Couldn't write to pom file '%s'&quot;, pom.getPath()), e);</span>
+<span class="fc" id="L138">        }</span>
+<span class="fc" id="L139">    }</span>
 
     // --
 
     private String evaluated(Version version) {
-<span class="fc" id="L143">        return version.formattedWith(releaseVersionFormat);</span>
+<span class="fc" id="L144">        return version.formattedWith(releaseVersionFormat);</span>
     }
 
     private void update(File pom, String newVersion) throws IOException {
-<span class="fc" id="L147">        Document doc = parsed(pom);</span>
+<span class="fc" id="L148">        Document doc = parsed(pom);</span>
 
-<span class="fc" id="L149">        firstExisting(</span>
-            doc.getChild(&quot;project/parent/version&quot;),
-            doc.getChild(&quot;project/version&quot;)
+<span class="fc" id="L150">        firstExisting(</span>
+                parentVersion(doc),
+                projectVersion(doc)
         ).setText(newVersion);
 
-<span class="fc" id="L154">        Files.write(doc.toString(), pom, charset);</span>
-<span class="fc" id="L155">    }</span>
+<span class="fc" id="L155">        Files.write(doc.toString(), pom, charset);</span>
+<span class="fc" id="L156">    }</span>
+
+    private Element projectVersion(Document doc) {
+<span class="fc" id="L159">        return doc.getChild(&quot;project/version&quot;);</span>
+    }
+
+    private Element parentVersion(Document doc) {
+<span class="pc bpc" id="L163" title="7 of 8 branches missed.">        if(project.hasParent()</span>
+                &amp;&amp; !isOrganizationPom(project.getParent())
+                &amp;&amp; isSnapshot(project.getParent())
+                &amp;&amp; sameGroupId(project, project.getParent())) {
+<span class="nc" id="L167">            return doc.getChild(&quot;project/parent/version&quot;);</span>
+        } else {
+<span class="fc" id="L169">            return null;</span>
+        }
+    }
+
+    private boolean sameGroupId(MavenProject project, MavenProject parent) {
+<span class="nc" id="L174">       return project.getGroupId().equals(parent.getGroupId());</span>
+    }
+
+    private boolean isSnapshot(MavenProject project) {
+<span class="nc" id="L178">        return project.getVersion().endsWith(&quot;SNAPSHOT&quot;);</span>
+    }
+
+    private boolean isOrganizationPom(MavenProject parent) {
+<span class="nc bnc" id="L182" title="All 4 branches missed.">        return &quot;pom&quot;.equals(parent.getPackaging()) &amp;&amp; parent.getModules().isEmpty();</span>
+    }
 
     private Element firstExisting(Element... elements) {
-<span class="fc" id="L158">        return Iterables.find(asList(elements), Predicates.notNull(), new Element(&quot;dummy&quot;));</span>
+<span class="fc" id="L186">        return Iterables.find(asList(elements), Predicates.notNull(), new Element(&quot;dummy&quot;));</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
