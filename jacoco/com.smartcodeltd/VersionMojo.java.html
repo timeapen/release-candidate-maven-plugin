@@ -5,6 +5,7 @@ import com.smartcodeltd.writer.Writer;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,8 +18,8 @@ import static org.apache.maven.plugins.annotations.LifecyclePhase.PACKAGE;
  * Retrieves project version specified in &lt;code&gt;pom.xml&lt;/code&gt; and outputs it
  * either to stdout or to a file, depending on &lt;a href=&quot;/version-mojo.html&quot;&gt;configuration&lt;/a&gt;.
  */
-@Mojo(name = &quot;version&quot;, requiresProject = true, defaultPhase = PACKAGE)
-<span class="fc" id="L21">public class VersionMojo</span>
+@Mojo(name = &quot;version&quot;, requiresProject = true, defaultPhase = PACKAGE, aggregator = true)
+<span class="fc" id="L22">public class VersionMojo</span>
     extends ReleaseCandidateMojo
 {
     private final static String default_output_uri      = &quot;stdout&quot;;
@@ -75,23 +76,23 @@ import static org.apache.maven.plugins.annotations.LifecyclePhase.PACKAGE;
     public void execute()
         throws MojoExecutionException
     {
-<span class="fc" id="L78">        File pom = project.getFile();</span>
+<span class="fc" id="L79">        File pom = project.getFile();</span>
 
         try {
-<span class="fc" id="L81">            Version version = currentVersionFrom(project.getFile());</span>
+<span class="fc" id="L82">            Version version = currentVersionFrom(project.getFile());</span>
 
-<span class="fc" id="L83">            info(&quot;Detected version: '%s'&quot;, version);</span>
+<span class="fc" id="L84">            info(&quot;Detected version: '%s'&quot;, version);</span>
 
-<span class="fc" id="L85">            Writer.from(outputUri, charset).</span>
+<span class="fc" id="L86">            Writer.from(outputUri, charset).</span>
                     write(version.formattedWith(outputTemplate));
         }
-<span class="nc" id="L88">        catch (Exception e) {</span>
-<span class="nc" id="L89">            throw new MojoExecutionException(String.format(&quot;Couldn't read project version from '%s'.&quot;, pom.getPath()), e);</span>
-<span class="fc" id="L90">        }</span>
-<span class="fc" id="L91">    }</span>
+<span class="nc" id="L89">        catch (Exception e) {</span>
+<span class="nc" id="L90">            throw new MojoExecutionException(String.format(&quot;Couldn't read project version from '%s'.&quot;, pom.getPath()), e);</span>
+<span class="fc" id="L91">        }</span>
+<span class="fc" id="L92">    }</span>
 
     private Version currentVersionFrom(File pom) throws IOException {
-<span class="fc" id="L94">        return new Version(checkNotNull(parsed(pom).getChild(&quot;project/version&quot;)).getText());</span>
+<span class="fc" id="L95">        return new Version(checkNotNull(parsed(pom).getChild(&quot;project/version&quot;)).getText());</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

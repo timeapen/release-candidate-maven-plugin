@@ -160,30 +160,27 @@ import org.apache.maven.project.MavenProject;
     }
 
     private Element parentVersion(Document doc) {
-<span class="pc bpc" id="L163" title="7 of 8 branches missed.">        if(project.hasParent()</span>
-                &amp;&amp; !isOrganizationPom(project.getParent())
-                &amp;&amp; isSnapshot(project.getParent())
-                &amp;&amp; sameGroupId(project, project.getParent())) {
-<span class="nc" id="L167">            return doc.getChild(&quot;project/parent/version&quot;);</span>
-        } else {
-<span class="fc" id="L169">            return null;</span>
-        }
+<span class="pc bpc" id="L163" title="1 of 2 branches missed.">        return shouldModifyParentVersion()</span>
+            ? doc.getChild(&quot;project/parent/version&quot;)
+            : null;
     }
 
-    private boolean sameGroupId(MavenProject project, MavenProject parent) {
-<span class="nc" id="L174">       return project.getGroupId().equals(parent.getGroupId());</span>
+    private boolean shouldModifyParentVersion() {
+<span class="pc bpc" id="L169" title="5 of 6 branches missed.">        return project.hasParent()</span>
+                &amp;&amp; ! isOrganizationPom(project.getParent())
+                &amp;&amp; hasSameGroupId(project, project.getParent());
     }
 
-    private boolean isSnapshot(MavenProject project) {
-<span class="nc" id="L178">        return project.getVersion().endsWith(&quot;SNAPSHOT&quot;);</span>
+    private boolean hasSameGroupId(MavenProject project, MavenProject parent) {
+<span class="nc" id="L175">       return project.getGroupId().equals(parent.getGroupId());</span>
     }
 
     private boolean isOrganizationPom(MavenProject parent) {
-<span class="nc bnc" id="L182" title="All 4 branches missed.">        return &quot;pom&quot;.equals(parent.getPackaging()) &amp;&amp; parent.getModules().isEmpty();</span>
+<span class="nc bnc" id="L179" title="All 4 branches missed.">        return &quot;pom&quot;.equals(parent.getPackaging()) &amp;&amp; parent.getModules().isEmpty();</span>
     }
 
     private Element firstExisting(Element... elements) {
-<span class="fc" id="L186">        return Iterables.find(asList(elements), Predicates.notNull(), new Element(&quot;dummy&quot;));</span>
+<span class="fc" id="L183">        return Iterables.find(asList(elements), Predicates.notNull(), new Element(&quot;dummy&quot;));</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
