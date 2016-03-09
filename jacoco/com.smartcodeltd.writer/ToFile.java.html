@@ -14,17 +14,21 @@ public class ToFile extends Writer {
     public ToFile(URI uri, Charset charset) throws IOException {
 <span class="fc" id="L15">        super(uri, charset);</span>
 
-<span class="fc" id="L17">        out = Files.newWriter(new File(uri), charset);</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L17">        File destination = new File(uri);</span>
+
+<span class="fc" id="L19">        Files.createParentDirs(destination);</span>
+
+<span class="fc" id="L21">        out = Files.newWriter(new File(uri), charset);</span>
+<span class="fc" id="L22">    }</span>
 
     @Override
     public void write(String message) {
         try {
-<span class="fc" id="L23">            out.write(message);</span>
-<span class="fc" id="L24">            out.close();</span>
-<span class="nc" id="L25">        } catch (IOException e) {</span>
-<span class="nc" id="L26">            throw new RuntimeException(String.format(&quot;Couldn't write to file: '%s'&quot;, uri), e);</span>
-<span class="fc" id="L27">        }</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L27">            out.write(message);</span>
+<span class="fc" id="L28">            out.close();</span>
+<span class="nc" id="L29">        } catch (IOException e) {</span>
+<span class="nc" id="L30">            throw new RuntimeException(String.format(&quot;Couldn't write to file: '%s'&quot;, uri), e);</span>
+<span class="fc" id="L31">        }</span>
+<span class="fc" id="L32">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
